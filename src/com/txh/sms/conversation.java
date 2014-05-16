@@ -30,7 +30,7 @@ public class conversation extends baseclass{
 	private PullToRefreshListView mPullListView;
 	private ListAdapter adapter;
 	private int from = 0 , to = 0;
-	private int pageCount = 25;
+	private int pageCount = 15;
 	private int total;
 	
 	public void onCreate(Bundle savedInstanceState){
@@ -57,13 +57,18 @@ public class conversation extends baseclass{
 	private void initData(){
 		list.clear();
 		total = tx.getPreferencesInt("conversation", "total");
-		if (total == 0) {
-			toast.show(R.string.read_list_null, getBaseContext());
-			startActivity(new Intent(this , MainActivity.class));
-		}
-		if (total<25) {
+		to = 0;
+		from = 0;
+		if (total < pageCount) {
 			mPullListView.setHasMoreData(false);
-			setmessage(total);
+			mPullListView.setScrollLoadEnabled(false);
+			to = total;
+			setmessage();
+		}else {
+			mPullListView.setHasMoreData(true);
+			mPullListView.setScrollLoadEnabled(true);
+			to = from + pageCount;
+			setmessage();
 		}
 	}
 	
@@ -79,11 +84,14 @@ public class conversation extends baseclass{
 			from = to;
 			to = from + pageCount;
 			if (to < total) {
-				setmessage(to);
+				setmessage();
 				mPullListView.setHasMoreData(true);
+				mPullListView.setScrollLoadEnabled(true);
 			}else {
-				setmessage(total);
+				to = total;
+				setmessage();
 				mPullListView.setHasMoreData(false);
+				mPullListView.setScrollLoadEnabled(false);
 			}
 			mPullListView.onPullUpRefreshComplete();
 			mPullListView.setLastUpdatedLabel(DateUtils.getDate("yyyy-MM-dd HH:mm"));
@@ -99,13 +107,13 @@ public class conversation extends baseclass{
 		}
 	};
 	
-	private void setmessage(int total) {
+	private void setmessage() {
 		
 		String dbFile = tx.getDbFile();
 		sqlite api = new sqlite();
 
 		String[] column = { "_id", "phone", "content", "ismy" , "total"};
-		String[][] value = api.getData(dbFile, "phone", "select * from phone limit " + from + "," + total,
+		String[][] value = api.getData(dbFile, "phone", "select * from phone limit " + from + "," + to,
 				null, column);
 		int size = value.length;
 		for (int i = 0; i < size; i++) {

@@ -43,7 +43,7 @@ public class read extends baseclass{
 	private String content , id;
 	private int position , total;
 	private int from = 0 , to = 0;
-	private int pageCount = 25;
+	private int pageCount = 15;
 
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -88,11 +88,13 @@ public class read extends baseclass{
 			from = to;
 			to = from + pageCount;
 			if (to < total) {
-				setmessage(to);
+				setmessage();
 				mPullListView.setHasMoreData(true);
 			}else {
-				setmessage(total);
+				to = total;
+				setmessage();
 				mPullListView.setHasMoreData(false);
+				mPullListView.setScrollLoadEnabled(false);
 			}
 			mPullListView.onPullUpRefreshComplete();
 			mPullListView.setLastUpdatedLabel(DateUtils.getDate("yyyy-MM-dd HH:mm"));
@@ -114,13 +116,22 @@ public class read extends baseclass{
 	
 	private void initData(){
 		list.clear();
-		if (total<25) {
+		to = 0;
+		from = 0;
+		if (total < pageCount) {
 			mPullListView.setHasMoreData(false);
-			setmessage(total);
+			mPullListView.setScrollLoadEnabled(false);
+			to = total;
+			setmessage();
+		}else {
+			mPullListView.setHasMoreData(true);
+			mPullListView.setScrollLoadEnabled(true);
+			to = from + pageCount;
+			setmessage();
 		}
 	}
 	
-	private void setmessage(int total){
+	private void setmessage(){
 
 		String [] phone = {num};
 
@@ -129,7 +140,7 @@ public class read extends baseclass{
 				   + getResources().getString(R.string.main_show));
 		bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.bkcolor));
 		String[] column = {"_id","ismy","content"};
-		String[][] value = api.getData(dbFile, "sms", "select * from sms where phone = ? limit " + from + "," + total, phone, column);
+		String[][] value = api.getData(dbFile, "sms", "select * from sms where phone = ? limit " + from + "," + to, phone, column);
 		int length = value.length;
 		
 		if(value.length<1){

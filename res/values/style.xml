@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+     <style name="txTheme" parent="@android:style/Theme.NoTitleBar">
+         <item name="android:windowBackground">@drawable/bj</item>
+         <item name="android:textColor">#000</item>
+     </style>
+     <style name="txTheme2" parent="@android:style/Theme.NoTitleBar">
+         <item name="android:windowBackground">@drawable/beauty</item>
+         <item name="android:textColor">#FFF</item>
+     </style>
+      <style name="txTheme3" parent="@android:style/Theme.NoTitleBar">
+         <item name="android:windowBackground">@drawable/bjt</item>
+         <item name="android:textColor">#FFF</item>
+     </style>
+     <style name="dialogTheme" parent="@android:style/Theme.Dialog">
+         <item name="android:windowBackground">@drawable/newmessage</item>
+         <item name="android:textColor">#000000</item> 
+     </style>
+</resources>

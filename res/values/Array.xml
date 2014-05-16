@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string-array name="Timing">
+<item>send</item>
+<item>delete</item>
+</string-array>
+<string-array name="TimingValue">
+<item>send</item>
+<item>delete</item>
+</string-array>
+
+<string-array name="anim">
+<item>fade in-out</item>
+<item>Zoom out</item>
+<item>ubuntu style</item>
+<item>unfold</item>
+<item>roll in</item>
+<item>Similar to iPhone</item>
+<item>From up to down</item>
+</string-array>
+<string-array name="animValue">
+<item>fade</item>
+<item>zoom</item>
+<item>ubuntu</item>
+<item>unfold</item>
+<item>roll</item>
+<item>iphone</item>
+<item>Staggered</item>
+</string-array>
+
+<string-array name="theme">
+<item>blue sky</item>
+<item>pure girl</item>
+<item>graceful beauty</item>
+</string-array>
+<string-array name="themeValue">
+<item>sky</item>
+<item>pure</item>
+<item>beauty</item>
+</string-array>
+
+<string-array name="lock">
+<item>null</item>
+<item>gesture</item>
+</string-array>
+<string-array name="lockValue">
+<item>null</item>
+<item>gesture</item>
+</string-array>
+
+</resources> 

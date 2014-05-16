@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0a1724"
+    android:orientation="vertical" >
+	<!-- 头像 -->
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="100dp"
+	    android:gravity="center" >
+	    <FrameLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	         >
+	        <ImageView
+	            android:id="@+id/lock_title_user_photo"
+	            android:layout_width="90dp"
+	            android:layout_height="90dp"
+	            android:background="@drawable/ic_launcher"
+	            android:layout_gravity="center" />
+	    </FrameLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="40dp"
+	    android:gravity="center_vertical"
+	     >
+	    <TextView 
+	        android:id="@+id/lock_user_info"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textSize="20sp"
+	        android:textColor="#464662"
+	        android:text="@string/pass_info"/>
+	</LinearLayout>
+	
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:layout_weight="1.0"
+	    android:id="@+id/lock_paint_layout"
+	     >
+	 <!-- 底端信息布局 -->
+	<LinearLayout
+	    android:id="@+id/bottom_info_layout"
+	    android:layout_width="match_parent"
+	    android:layout_height="45dp"
+	    android:layout_alignParentBottom="true"
+	    android:orientation="horizontal"
+	    android:gravity="center" >
+	    <Button
+	        android:id="@+id/btn_lock_nopin"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1.0"
+	        android:gravity="center"
+	        android:background="#00000000"
+	        android:textColor="#464662"
+	        android:textSize="20sp"
+	        android:text="@string/pass_hint" 
+	        />
+	</LinearLayout>
+	<!-- 画手势矩阵布局 -->
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_alignParentTop="true"
+	    android:layout_above="@id/bottom_info_layout"
+	    android:gravity="center"
+	    android:background="#60cfcfcf"
+	     >
+	    <com.ijustyce.androidlib.LockScreenView 
+	        android:id="@+id/lock_paint"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        />
+	</LinearLayout>
+	
+  </RelativeLayout>
+
+</LinearLayout>

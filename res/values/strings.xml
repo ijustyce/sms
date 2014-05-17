@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">tx-sms</string>
+    <string name="send_show">success</string>
+    <string name="send_error">input error</string>
+    <string name="with">message with </string>
+    <string name="main_show">click to reply</string>
+    <string name="close">close</string>
+    <string name="reply">reply</string>
+    <string name="me">myself</string>
+    <string name="newmessage">new message</string>
+    <string name="quickhint">content</string>
+    <string name="ask_content">delete this message?</string>
+    <string name="clean">delete all</string>
+    <string name="add">Intercept</string>
+    <string name="intercept">intercept</string>
+    <string name="intercept_show">click to delete</string>
+    <string name="intercept_phone">intercept number list</string>
+    <string name="intercept_words">intercept key words list</string>
+    <string name="add_error">already exists!</string>
+    <string name="send_hint">phone call</string>
+    <string name="hint">message content</string>
+    <string name="send">send</string>
+    <string name="finish">exit</string>
+    <string name="send_success">send success</string>
+    <string name="send_fail">send fail</string>
+    <string name="receive_success">receive success</string>
+    <string name="send_title">send &#8230;</string>
+    <string name="send_content">send in process &#8230;</string>
+    <string name="clickCleanContent">delete all message with this friend?</string>
+    <string name="select">select</string>
+    <string name="txh_version">tx-Messaging 3.1</string>
+    <string name="about_txh">powered by bbs.ijustyce.com</string>
+    <string name="enter_send">Enter send</string>
+    <string name="cancel">Cancel</string>
+    <string name="use">Check to use this</string>
+    <string name="send_again">send again if fail</string>
+    <string name="quickShow">preview window</string>
+    <string name="hello_world">More concise, more unique</string>
+    <string name="newMsg">New</string>
+    <string name="Conversation">Conversation</string>
+    <string name="Inbox">Inbox</string>
+    <string name="feedback">feedback</string>
+    <string name="Dustbin">Advanced\n features</string>
+    <string name="more">Security center</string>
+    <string name="about">about us</string>
+    <string name="ask">do you sure?</string>
+    <string name="exit">Your phone will be at risk!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="recent">recent contact</string>
+    <string name="SMStimer">Timing\n message</string>
+    <string name="timingSms">OK</string>
+    <string name="Timing_error">please click checkbox first !</string>
+    <string name="dealMsg">deal Timing sms if timeout</string>
+    <string name="summary">select*</string>
+    <string name="anim">windows animation</string>
+    <string name="error_timing">date error &#8230;</string>
+    <string name="strangers">No disturbing if strangers</string>
+    <string name="key">add to intercept list</string>
+    <string name="value">the words to intercept</string>
+    <string name="add_number">intercept\n number</string>
+    <string name="add_words">intercept\n words</string>
+    <string name="backup">backup</string>
+    <string name="warn">old file will delete !</string>
+    <string name="restore">restore</string>
+    <string name="submit">submit</string>
+    <string name="contact">contact</string>
+    <string name="msg">content</string>
+    <string name="dialog_title">please wait</string>
+    <string name="dialog_content">please wait some seconds…</string>
+    <string name="error_feedback">input can not be empty</string>
+    <string name="sign_fail">Not the original software,uninstall is needed.</string>
+    <string name="sign_success">is original software,thanks for use.</string>
+    <string name="checkSign">Signature verification</string>
+    <string name="theme">theme</string>
+    <string name="show_much">too much item , please delete or will effect application</string>
+
+    <!-- 会话列表界面，常按弹出菜单选项 -->
+    <string name="delete">Delete</string>
+    <string name="del_all">Delete all</string>
+    <string name="option">Option</string>
+    <string name="add_contacts">Add Contacts</string>
+    <string name="call">Call Number</string>
+    <string name="copy">Copy</string>
+    <string name="transmit">Transmit</string>
+    <string name="copy_success">Successfully copied to clipboard</string>
+    <string name="none_sms">Conversation is empty</string>
+    <string name="intecept_num">intecept this</string>
+
+    <!-- 以下字符串是为ui测试准备 -->
+
+    <string name="desc_newMsg">newMsg</string>
+    <string name="desc_Conversation">Conversation</string>
+    <string name="desc_SMStimer">SMStimer</string>
+    <string name="desc_feedback">feedback</string>
+    <string name="desc_intercept">intercept</string>
+    <string name="desc_Dustbin">Dustbin</string>
+    <string name="desc_about">about</string>
+    <string name="desc_more">more</string>
+    <string name="desc_select">select</string>
+    <string name="desc_finish">exit</string>
+    <string name="desc_send">send</string>
+    <string name="desc_timingSms">OK</string>
+
+    <!-- settings -->
+    <string name="pw_set">please set your password</string>
+    <string name="ok">OK</string>
+    <string name="lock">Application Lock</string>
+
+    <!-- password -->
+    <string name="del">delete</string>
+    <string name="pw_success">welcome</string>
+    <string name="pw_error">password error</string>
+    <string name="pw_wait">too many error , Application will exit</string>
+    <string name="pass_hint">plase remember your gesture</string>
+    <string name="pass_info">please unlock</string>
+    <string name="pass_first">draw your gesture</string>
+    <string name="pass_affirm">affirm your gesture</string>
+    <string name="pass_affirm_error">inconformity</string>
+
+    <!-- 以下是自定义的颜色 -->
+
+    <drawable name="bkcolor">#33CCFF</drawable>
+    <drawable name="newmessage">#FFF</drawable>
+    <drawable name="divider">#00000000</drawable>
+
+</resources>

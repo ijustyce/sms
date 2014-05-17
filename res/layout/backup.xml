@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:gravity="center"
+    android:orientation="vertical" >
+
+    <Button
+        android:alpha="0.7"
+        android:background="#33CCFF"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+		android:id="@+id/BackupBt"
+		android:onClick="BtClick"
+        android:text="@string/backup" />
+		
+	<TextView
+		android:layout_height="30dip"
+		android:layout_width="fill_parent"/>
+
+	<Button
+	    android:alpha="0.7"
+        android:background="#33CCFF"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+		android:id="@+id/RestoreBt"
+		android:onClick="BtClick"
+        android:text="@string/restore" />
+	
+	<TextView
+		android:layout_height="30dip"
+		android:layout_width="fill_parent"/>
+
+	<Button
+	    android:alpha="0.7"
+        android:background="#33CCFF"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+		android:id="@+id/checkSignBt"
+		android:onClick="BtClick"
+        android:text="@string/checkSign" />
+		
+	<TextView
+		android:layout_height="5dip"
+		android:layout_width="fill_parent"/>
+
+</LinearLayout>

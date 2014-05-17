@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string-array name="Timing">
+<item>发送</item>
+<item>删除</item>
+</string-array>
+<string-array name="TimingValue">
+<item>send</item>
+<item>delete</item>
+</string-array>
+
+<string-array name="anim">
+<item>淡入淡出</item>
+<item>放大淡出</item>
+<item>ubuntu风格</item>
+<item>向下展开</item>
+<item>向右滑入</item>
+<item>类iphone</item>
+<item>上下交错</item>
+</string-array>
+<string-array name="animValue">
+<item>fade</item>
+<item>zoom</item>
+<item>ubuntu</item>
+<item>unfold</item>
+<item>roll</item>
+<item>iphone</item>
+<item>Staggered</item>
+</string-array>
+
+<string-array name="theme">
+<item>蓝天白云</item>
+<item>清新美女</item>
+<item>气质美女</item>
+</string-array>
+<string-array name="themeValue">
+<item>sky</item>
+<item>pure</item>
+<item>beauty</item>
+</string-array>
+
+<string-array name="lock">
+<item>无</item>
+<item>手势</item>
+</string-array>
+<string-array name="lockValue">
+<item>null</item>
+<item>gesture</item>
+</string-array>
+
+</resources> 

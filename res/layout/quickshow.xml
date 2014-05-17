@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF"
+    android:alpha="0.8"
+    android:orientation="vertical" >
+	
+	<ScrollView
+	    android:id="@+id/layout"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:scrollbars="none"
+		android:orientation="vertical" >
+		<LinearLayout
+			android:id="@+id/show"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="top"
+			android:gravity="center"  
+			android:orientation="vertical" >    
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/showcontent"/>
+		</LinearLayout>
+    </ScrollView>
+    
+    <TextView
+	    android:layout_width="fill_parent"
+	    android:layout_height="8dp"/>
+    
+	<TableLayout
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"  
+		android:layout_gravity="center"
+		android:stretchColumns="*">
+		<TableRow>  
+			<EditText
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/quickhint"
+				android:singleLine="true" 
+				android:id="@+id/newmessage"/>
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/reply"
+				android:onClick="yc"
+				android:id="@+id/quickreply"/>
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/close"
+				android:onClick="yc"
+				android:id="@+id/quickclose"/>
+		</TableRow>      
+	</TableLayout>   
+</LinearLayout>

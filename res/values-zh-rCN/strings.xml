@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">天蝎短信</string>
+    <string name="send_show">短信已成功发送</string>
+    <string name="send_error">输入不能为空</string>
+    <string name="with">与</string>
+    <string name="main_show">的对话按我回复</string>
+    <string name="close">关闭</string>
+    <string name="reply">回复</string>
+    <string name="me">我</string>
+    <string name="newmessage">您收到一条新短信</string>
+    <string name="quickhint">请输入短信内容</string>
+    <string name="ask">询问</string>
+    <string name="ask_content">您确定删除这条记录？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="clean">清空</string>
+    <string name="add">加入拦截</string>
+    <string name="intercept">拦截列表</string>
+    <string name="intercept_show">点击删除！</string>
+    <string name="intercept_phone">拦截号码列表</string>
+    <string name="intercept_words">拦截关键字列表</string>
+    <string name="add_error">已经存在于骚扰列表，无需添加！</string>
+    <string name="send_hint">联系人手机号</string>
+    <string name="hint">短信内容，按回车键即可发送！</string>
+    <string name="send">发送</string>
+    <string name="finish">退出</string>
+    <string name="send_success">发送成功！</string>
+    <string name="send_fail">发送失败！</string>
+    <string name="receive_success">已收到你的短信！</string>
+    <string name="send_title">正在发送&#8230;</string>
+    <string name="send_content">短信正在发送中，请稍候&#8230;</string>
+    <string name="clickCleanContent">清空与该联系人的对话？</string>
+    <string name="select">选择</string>
+    <string name="recent">常用联系人</string>
+    <string name="enter_send">回车发送</string>
+    <string name="cancel">取消</string>
+    <string name="use">打钩使用该功能</string>
+    <string name="send_again">自动重发</string>
+    <string name="quickShow">预览窗口</string>
+    <string name="hello_world">更简洁，更独特</string>
+    <string name="newMsg">新建</string>
+    <string name="Conversation">会话</string>
+    <string name="Inbox">已接收</string>
+    <string name="feedback">用户反馈</string>
+    <string name="Dustbin">高级功能</string>
+    <string name="more">安全中心</string>
+    <string name="about">关于天蝎</string>
+    <string name="SMStimer">定时短信</string>
+    <string name="timingSms">定时发送</string>
+    <string name="Timing_error">请先勾选定时短信！</string>
+    <string name="dealMsg">过时的定时短信</string>
+    <string name="anim">窗口切换动画</string>
+    <string name="summary">必选*</string>
+    <string name="error_timing">选择的日期不合法！</string>
+    <string name="strangers">不提醒陌生短信！</string>
+    <string name="key">添加到骚扰拦截列表</string>
+    <string name="value">关键字或电话号码</string>
+    <string name="add_number">拦截\n号码</string>
+    <string name="add_words">拦截\n关键字</string>
+    <string name="backup">备份短信</string>
+    <string name="restore">还原短信</string>
+    <string name="warn">旧文件会被删掉 !</string>
+    <string name="submit">提交</string>
+    <string name="contact">qq号</string>
+    <string name="msg">反馈内容</string>
+    <string name="dialog_title">请稍后</string>
+    <string name="dialog_content">正在提交，请稍后</string>
+    <string name="error_feedback">输入不能为空</string>
+    <string name="sign_fail">不是原版软件，建议您卸载。</string>
+    <string name="checkSign">原版验证</string>
+    <string name="sign_success">验证通过，感谢您选择天蝎软件。</string>
+    <string name="theme">主题</string>
+    <string name="show_much">条数太多，请删除部分，否则影响运行</string>
+
+    <!-- 会话列表界面，常按弹出菜单选项 -->
+    <string name="delete">删除</string>
+    <string name="del_all">全删</string>
+    <string name="option">选项</string>
+    <string name="add_contacts">添加到联系人</string>
+    <string name="call">呼叫联系人</string>
+    <string name="copy">复制</string>
+    <string name="transmit">转发</string>
+    <string name="copy_success">已成功复制到粘贴板</string>
+    <string name="none_sms">会话列表为空</string>
+    <string name="intecept_num">拦截该号码</string>
+
+    <!-- settings -->
+    <string name="pw_set">请输入您的密码</string>
+    <string name="ok">确定</string>
+    <string name="lock">程序锁</string>
+
+    <!-- password -->
+    <string name="del">回退</string>
+    <string name="pw_success">欢迎使用</string>
+    <string name="pw_error">密码错误</string>
+    <string name="pw_wait">错误次数太多，程序即将退出</string>
+    <string name="pass_hint">手势无法找回，请牢记</string>
+    <string name="pass_info">请绘制手势以解锁</string>
+    <string name="pass_first">请绘制您的手势</string>
+    <string name="pass_affirm">请确认您的手势</string>
+    <string name="pass_affirm_error">两次手势不一致，请重新绘制</string>
+    
+    <!-- read -->
+    <string name="read_list_null">列表为空！</string>
+
+</resources>

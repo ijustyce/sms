@@ -109,6 +109,8 @@ public class MessageActivity extends Service{
 			String[] value2 = { phone };
 			String[] column2 = { "phone" };
 			api.insertData(dbFile, "recent", value2, column2);
+		}if (phone.equals(read.num)) {
+			read.total++;
 		}
 	}
 }

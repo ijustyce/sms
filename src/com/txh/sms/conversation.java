@@ -59,6 +59,11 @@ public class conversation extends baseclass{
 		total = tx.getPreferencesInt("conversation", "total");
 		to = 0;
 		from = 0;
+		if (total < 1) {
+			toast.show(R.string.none_sms, getBaseContext());
+			startActivity(new Intent(this , MainActivity.class));
+			this.finish();
+		}
 		if (total < pageCount) {
 			mPullListView.setHasMoreData(false);
 			mPullListView.setScrollLoadEnabled(false);
@@ -87,12 +92,13 @@ public class conversation extends baseclass{
 				setmessage();
 				mPullListView.setHasMoreData(true);
 				mPullListView.setScrollLoadEnabled(true);
-			}else {
+				return ;
+			}if(to > total) {
 				to = total;
 				setmessage();
-				mPullListView.setHasMoreData(false);
-				mPullListView.setScrollLoadEnabled(false);
 			}
+			mPullListView.setHasMoreData(false);
+			mPullListView.setScrollLoadEnabled(false);
 			mPullListView.onPullUpRefreshComplete();
 			mPullListView.setLastUpdatedLabel(DateUtils.getDate("yyyy-MM-dd HH:mm"));
 		}
@@ -135,11 +141,9 @@ public class conversation extends baseclass{
 	
 	private void show(String phone , int total){
 		
-		Bundle bundle = new Bundle();
-		bundle.putString("number", phone);
-		bundle.putInt("total", total);
+		read.num = phone;
+		read.total = total;
 		Intent read = new Intent(this, read.class);
-		read.putExtras(bundle);
 		startActivity(read);
 		anim();
 		finish();

@@ -27,8 +27,8 @@ import com.ijustyce.androidlib.baseclass;
 import com.ijustyce.unit.DateUtils;
 import com.ijustyce.unit.toast;
 import com.macjay.pulltorefresh.PullToRefreshBase;
-import com.macjay.pulltorefresh.PullToRefreshListView;
 import com.macjay.pulltorefresh.PullToRefreshBase.OnRefreshListener;
+import com.macjay.pulltorefresh.PullToRefreshListView;
 import com.txh.Api.sqlite;
 import com.txh.model.ListModel;
 import com.txh.sms.adapter.ListAdapter;
@@ -38,10 +38,12 @@ public class read extends baseclass{
 	private List<ListModel> list;
 	private ListAdapter adapter;
 	private PullToRefreshListView mPullListView;
-	private String num , dbFile;
+	private String dbFile;
 	private sqlite api;
 	private String content , id;
-	private int position , total;
+	public static String num;
+	private int position;
+	public static int total;
 	private int from = 0 , to = 0;
 	private int pageCount = 15;
 
@@ -49,13 +51,11 @@ public class read extends baseclass{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.show);
 		
-		Bundle bundle = getIntent().getExtras();
-		if (bundle == null) {
-			toast.show(R.string.read_list_null, getBaseContext());
+		if (total < 1) {
+			toast.show(R.string.none_sms, getBaseContext());
 			startActivity(new Intent(this , conversation.class));
+			this.finish();
 		}
-		num = bundle.getString("number");
-		total = bundle.getInt("total");
 		Log.i("===read===", "read sms of " + num + " total sms number: " + total);
 		api = new sqlite();
 		dbFile = tx.getDbFile();
@@ -90,12 +90,14 @@ public class read extends baseclass{
 			if (to < total) {
 				setmessage();
 				mPullListView.setHasMoreData(true);
-			}else {
+				mPullListView.setScrollLoadEnabled(true);
+				return ;
+			}if(to > total) {
 				to = total;
 				setmessage();
-				mPullListView.setHasMoreData(false);
-				mPullListView.setScrollLoadEnabled(false);
 			}
+			mPullListView.setHasMoreData(false);
+			mPullListView.setScrollLoadEnabled(false);
 			mPullListView.onPullUpRefreshComplete();
 			mPullListView.setLastUpdatedLabel(DateUtils.getDate("yyyy-MM-dd HH:mm"));
 		}
@@ -140,14 +142,9 @@ public class read extends baseclass{
 				   + getResources().getString(R.string.main_show));
 		bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.bkcolor));
 		String[] column = {"_id","ismy","content"};
-		String[][] value = api.getData(dbFile, "sms", "select * from sms where phone = ? limit " + from + "," + to, phone, column);
+		String[][] value = api.getData(dbFile, "sms", "select * from sms "
+				+ "where phone = ? limit " + from + "," + to, phone, column);
 		int length = value.length;
-		
-		if(value.length<1){
-			tx.showToast(R.string.none_sms);
-			startActivity(new Intent(this , conversation.class));
-			this.finish();
-		}
 		for(int i = 0 ; i< length; i++){
 			ListModel model = new ListModel();
 			model.setId(value[i][0]);
@@ -242,10 +239,8 @@ public class read extends baseclass{
 		
 		String [] args = {id};
 		api.delete(dbFile, "sms", "_id=?", args);
-		
-		boolean isExist;
-		isExist = api.exists(dbFile, "sms", "phone", num);
-		if(!isExist){
+		total--;
+		if(total < 1){
 			String [] arg = {num};
 			api.delete(dbFile, "phone", "phone=?", arg);
 			int total = tx.getPreferencesInt("conversation", "total");

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -53,11 +53,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import com.ijustyce.androidlib.baseclass;
+import com.ijustyce.unit.toast;
 import com.txh.Api.common;
 import com.txh.Api.sqlite;
-public class sendsms extends baseclass {
+@SuppressLint("HandlerLeak") public class sendsms extends baseclass {
 
 	/** Called when the activity is first created. */
 	PendingIntent send, receive;
@@ -210,7 +210,7 @@ public class sendsms extends baseclass {
 				addTimingSms();
 			}
 			else{
-				tx.showToast(R.string.Timing_error);
+				toast.show(R.string.Timing_error , getBaseContext());
 			}
 			break;
 		}
@@ -405,6 +405,8 @@ public class sendsms extends baseclass {
 			String[] value2 = {phone};
 			String[] column2 = {"phone"};
 			api.insertData(dbFile, "recent", value2, column2);
+		}if (phone.equals(read.num)) {
+			read.total++;
 		}
 	}
 

@@ -37,6 +37,13 @@ public class backup extends baseclass {
 		if (!filePath.exists()) {
 			filePath.mkdir();
 		}
+		
+		filePath = new File(Environment.getDataDirectory() + "/data/" 
+		+ this.getPackageName() + "/shared_prefs");
+
+		if (!filePath.exists()) {
+			filePath.mkdir();
+		}
 	}
 	
 	private void initBt(){
@@ -100,10 +107,26 @@ public class backup extends baseclass {
 		File dst = new File(Environment.getExternalStorageDirectory().getPath()
 				+ "/.txh/backup_sms.db");
 		File src = new File(tx.getDbFile());
+		if(!src.exists()){
+			return ;
+		}
 		if (dst.exists()) {
 			dst.delete();
 		}
 		txApi.copy(src, dst);
+		
+		dst = new File(Environment.getExternalStorageDirectory().getPath()
+				+ "/.txh/total.xml");
+		src = new File(Environment.getDataDirectory() + "/data/" 
+				+ this.getPackageName() + "/shared_prefs/total.xml");
+		if(!src.exists()){
+			return ;
+		}
+		if (dst.exists()) {
+			dst.delete();
+		}
+		txApi.copy(src, dst);
+		
 	}
 	
 	private void RestorePre() {
@@ -118,6 +141,21 @@ public class backup extends baseclass {
 		File src = new File(Environment.getExternalStorageDirectory().getPath()
 				+ "/.txh/backup_sms.db");
 		File dst = new File(tx.getDbFile());
+		if(!src.exists()){
+			return ;
+		}
+		if (dst.exists()) {
+			dst.delete();
+		}
+		txApi.copy(src, dst);
+		
+		src = new File(Environment.getExternalStorageDirectory().getPath()
+				+ "/.txh/total.xml");
+		dst = new File(Environment.getDataDirectory() + "/data/" 
+				+ this.getPackageName() + "/shared_prefs/total.xml");
+		if(!src.exists()){
+			return ;
+		}
 		if (dst.exists()) {
 			dst.delete();
 		}

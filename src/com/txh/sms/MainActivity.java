@@ -23,10 +23,9 @@ public class MainActivity extends baseclass{
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.activity_main);
-		init();
 		tx.setMainActivity(new Intent(this , MainActivity.class));
+		init();
 	}	
 	private void init(){
 		

@@ -16,15 +16,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ijustyce.androidlib.baseclass;
 import com.ijustyce.unit.DateUtils;
+import com.ijustyce.unit.LogCat;
 import com.ijustyce.unit.toast;
 import com.macjay.pulltorefresh.PullToRefreshBase;
 import com.macjay.pulltorefresh.PullToRefreshBase.OnRefreshListener;
@@ -51,12 +50,24 @@ public class read extends baseclass{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.show);
 		
+		Bundle bundle = getIntent().getExtras();
+		if (bundle!=null) {
+			num = bundle.getString("num");
+			total = bundle.getInt("total");
+		}else{
+			SharedPreferences shared = getSharedPreferences("read",
+					Context.MODE_PRIVATE);
+			num = shared.getString("number", "");
+			total = shared.getInt("total", 0);
+			shared.edit().clear().commit();
+		}
+		
 		if (total < 1) {
 			toast.show(R.string.none_sms, getBaseContext());
 			startActivity(new Intent(this , conversation.class));
 			this.finish();
 		}
-		Log.i("===read===", "read sms of " + num + " total sms number: " + total);
+		LogCat.i("===read===", "read sms of " + num + " total sms number: " + total);
 		api = new sqlite();
 		dbFile = tx.getDbFile();
 		
@@ -91,6 +102,7 @@ public class read extends baseclass{
 				setmessage();
 				mPullListView.setHasMoreData(true);
 				mPullListView.setScrollLoadEnabled(true);
+				mPullListView.onPullUpRefreshComplete();
 				return ;
 			}if(to > total) {
 				to = total;
@@ -98,7 +110,6 @@ public class read extends baseclass{
 			}
 			mPullListView.setHasMoreData(false);
 			mPullListView.setScrollLoadEnabled(false);
-			mPullListView.onPullUpRefreshComplete();
 			mPullListView.setLastUpdatedLabel(DateUtils.getDate("yyyy-MM-dd HH:mm"));
 		}
 	};
@@ -323,8 +334,7 @@ public class read extends baseclass{
 		String[]value = {num};
 		boolean isExist = api.exists(dbFile, "intercept", "value", num);
 		if(isExist){
-			Toast.makeText(this,getResources().getString(R.string.add_error),
-					   Toast.LENGTH_LONG).show();
+			toast.show(R.string.add_error, getBaseContext());
 			return ;
 		}
 		else{

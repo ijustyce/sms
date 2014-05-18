@@ -29,13 +29,13 @@ public class conversation extends baseclass{
 	private  List<ListModel> list;
 	private PullToRefreshListView mPullListView;
 	private ListAdapter adapter;
-	private int from = 0 , to = 0;
+	private int from = 0 , to = 0 , total;
 	private int pageCount = 15;
-	private int total;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.conversition);
+
 		init();
 		initData();
 	}
@@ -92,6 +92,7 @@ public class conversation extends baseclass{
 				setmessage();
 				mPullListView.setHasMoreData(true);
 				mPullListView.setScrollLoadEnabled(true);
+				mPullListView.onPullUpRefreshComplete();
 				return ;
 			}if(to > total) {
 				to = total;
@@ -140,12 +141,14 @@ public class conversation extends baseclass{
 	}
 	
 	private void show(String phone , int total){
-		
-		read.num = phone;
-		read.total = total;
+
 		Intent read = new Intent(this, read.class);
+		Bundle bundle = new Bundle();
+		bundle.putString("num", phone);
+		bundle.putInt("total", total);
+		read.putExtras(bundle);
 		startActivity(read);
 		anim();
-		finish();
+		this.finish();
 	}
 }

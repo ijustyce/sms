@@ -11,7 +11,6 @@ import android.content.SharedPreferences.Editor;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.IBinder;
-import android.util.Log;
 
 import com.ijustyce.androidlib.txApplication;
 import com.txh.Api.sqlite;
@@ -67,7 +66,7 @@ public class dealmsg extends Service {
 
 	private void updateDatabese() {
 		if (!intercept) {
-			addData(phone, content + "\n" + tx.getDate("yyyy-MM-dd  HH:mm:ss"),
+			int total = addData(phone, content + "\n" + tx.getDate("yyyy-MM-dd  HH:mm:ss"),
 					"false");
 
 			SharedPreferences myshared = getSharedPreferences(
@@ -82,11 +81,11 @@ public class dealmsg extends Service {
 					startActivity(showMsg);
 				}
 			}
-			remind(tx.getName(phone)[0], content);
+			remind(phone, content , total);
 		}
 	}
 
-	private void addData(String phone, String content, String type) {
+	private int addData(String phone, String content, String type) {
 
 		String[] column = { "total" };
 		int total = 0;
@@ -105,9 +104,8 @@ public class dealmsg extends Service {
 			api.update(dbFile, "phone", updateValue, updateColumn, args, sql);
 		} else {
 			api.insertData(dbFile, "phone", updateValue, updateColumn);
-			total = tx.getPreferencesInt("conversation", "total");
-			tx.setPreferencesInt("conversation", total + 1, "total");
-			Log.i("===total===", total + "");
+			int cTotal = tx.getPreferencesInt("conversation", "total");
+			tx.setPreferencesInt("conversation", cTotal + 1, "total");
 		}
 
 		String[] smsColumn = { "phone", "content", "ismy" };
@@ -123,26 +121,29 @@ public class dealmsg extends Service {
 		}if (phone.equals(read.num)) {
 			read.total++;
 		}
+		return total;
 	}
 
-	public void remind(String name, String msg) {
+	public void remind(String phone, String msg,int total) {
+		
 		SharedPreferences sharedPreferences = getSharedPreferences("read",
 				Context.MODE_PRIVATE);
 		Editor editor = sharedPreferences.edit();
 		editor.putString("number", phone);
+		editor.putInt("total", total);
 		editor.commit();
-
+		
+		String name = tx.getName(phone)[0];
 		notificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		Notification notification = new Notification();
 		notification.icon = R.drawable.ic_launcher;
 		notification.tickerText = name + ": " + msg;
-		PendingIntent intent1 = PendingIntent.getActivity(this, 0, new Intent(
-				this, read.class), 0);
+		Intent intent = new Intent(this, read.class);
+		PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent , 0);
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		notification.setLatestEventInfo(this, name, msg, intent1);
-		Log.i("---justyce---", String.valueOf(disturbing));
+		notification.setLatestEventInfo(this, name, msg, pendingIntent);
 		if (!disturbing || (disturbing && tx.getName(phone)[1].equals("true"))) {
 			String ringName = "";
 			try {

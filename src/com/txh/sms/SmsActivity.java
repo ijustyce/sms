@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.ijustyce.unit.LogCat;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +18,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
 public class SmsActivity extends BroadcastReceiver {
 
@@ -40,7 +41,7 @@ public class SmsActivity extends BroadcastReceiver {
 			try {
 				if (messages.length == 1 || sms.isReplace()) {
 					body = sms.getDisplayMessageBody();
-					Log.d("---sms---", body); 
+					LogCat.d("---sms---", body); 
 				} else {
 					StringBuilder bodyText = new StringBuilder();
 					for (int i = 0; i < messages.length; i++) {

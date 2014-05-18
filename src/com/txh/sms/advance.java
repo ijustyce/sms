@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.ijustyce.androidlib.baseclass;
+import com.ijustyce.unit.toast;
 import com.txh.Api.sqlite;
 
 public class advance extends baseclass{
@@ -73,7 +73,7 @@ public class advance extends baseclass{
 	private void add(String type){
 		String number = getValue();
 		if(isExist(number,type)){
-			showToast(getResources().getString(R.string.add_error));
+			toast.show(R.string.add_error, getBaseContext());
 			return ;
 		}
 		
@@ -93,9 +93,5 @@ public class advance extends baseclass{
 			}
 		}
 		return false;
-	}
-	
-	private void showToast(String s){
-		Toast.makeText(this, s, Toast.LENGTH_LONG).show();
 	}
 }

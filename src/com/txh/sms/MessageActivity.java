@@ -12,11 +12,11 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.ijustyce.androidlib.txApplication;
+import com.ijustyce.unit.LogCat;
+import com.ijustyce.unit.toast;
 import com.txh.Api.sqlite;
 
 public class MessageActivity extends Service{
@@ -70,7 +70,7 @@ public class MessageActivity extends Service{
 			newmessage.edit().clear().commit();	
 		} 
 		else{
-			Toast.makeText(this, R.string.send_error, Toast.LENGTH_LONG).show();
+			toast.show(R.string.send_error, getBaseContext());
 		}
 		stopSelf();
 	}
@@ -96,7 +96,7 @@ public class MessageActivity extends Service{
 			api.insertData(dbFile, "phone", updateValue, updateColumn);
 			total = tx.getPreferencesInt("conversation", "total");
 			tx.setPreferencesInt("conversation", total + 1, "total");
-			Log.i("===total===", total + "");
+			LogCat.i("===total===", total + "");
 		}
 
 		String[] smsColumn = { "phone", "content", "ismy" };

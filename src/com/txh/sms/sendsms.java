@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -34,7 +35,6 @@ import android.provider.ContactsContract;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.SmsManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -52,8 +52,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
 import com.ijustyce.androidlib.baseclass;
+import com.ijustyce.unit.LogCat;
 import com.ijustyce.unit.toast;
 import com.txh.Api.common;
 import com.txh.Api.sqlite;
@@ -88,7 +89,7 @@ import com.txh.Api.sqlite;
 		if (bundle != null)
 		{
 			String msg = bundle.getString("sms_body");
-			Log.i("---smsContent---", msg);
+			LogCat.i("---smsContent---", msg);
 			tv1.setText(msg);
 		}
 		
@@ -290,7 +291,7 @@ import com.txh.Api.sqlite;
 		tv2.setText("");
 
 		if (phone.equals("") || content.equals("")) {
-			Toast.makeText(this, R.string.send_error, Toast.LENGTH_LONG).show();
+			toast.show(R.string.send_error, getBaseContext());
 			return;
 		}
 
@@ -382,7 +383,7 @@ import com.txh.Api.sqlite;
 		if (value.length > 0) {
 			total = Integer.parseInt(value[0][0]);
 		}
-		Log.i("===total===", "total msg of this conversation" + total);
+		LogCat.i("===total===", "total msg of this conversation" + total);
 		String[]updateColumn = {"phone","content","ismy" ,"total"};
 		String[]updateValue = {phone,content,type , String.valueOf(total+1)};
 		if(total > 0){
@@ -422,8 +423,7 @@ import com.txh.Api.sqlite;
 				tv1.requestFocus();
 				switch (getResultCode()) {
 				case Activity.RESULT_OK: {
-					Toast.makeText(context,
-					getResources().getString(R.string.send_success),Toast.LENGTH_LONG).show();
+					toast.show(R.string.send_success, getBaseContext());
 					EndSend = true;
 					SendFail = false;
 					unregisterReceiver(this);
@@ -431,9 +431,7 @@ import com.txh.Api.sqlite;
 				}
 
 				default: {
-					Toast.makeText(context,
-							getResources().getString(R.string.send_fail),
-							Toast.LENGTH_LONG).show();
+					toast.show(R.string.send_fail, getBaseContext());
 
 					EndSend = true;
 					SendFail = true;
@@ -490,7 +488,7 @@ import com.txh.Api.sqlite;
         LinearLayout Layout = new LinearLayout(this);
        
 		for(int i = 0;i<value.length;i++){
-			Log.i("---recent---", "start");
+			LogCat.i("---recent---", "start");
 			phone = value[i][0];
 			final String temp = phone;	
 			Button bt = new Button(this);
@@ -642,7 +640,7 @@ import com.txh.Api.sqlite;
 		content = tv2.getText().toString();
 
 		if (phone.equals("") || content.equals("")) {
-			Toast.makeText(this, R.string.send_error, Toast.LENGTH_LONG).show();
+			toast.show(R.string.send_error, getBaseContext());
 			return;
 		}
 

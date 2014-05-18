@@ -3,6 +3,7 @@ package com.txh.sms;
 import java.io.File;
 
 import com.ijustyce.androidlib.baseclass;
+import com.ijustyce.unit.toast;
 import com.txh.Api.common;
 
 import android.app.AlertDialog;
@@ -13,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class backup extends baseclass {
 
@@ -92,8 +92,7 @@ public class backup extends baseclass {
 			 startActivity(intent);
 		}
 		else{
-			Toast.makeText(this, getResources().getString(R.string.sign_success)
-					.toString(), Toast.LENGTH_LONG).show();
+			toast.show(R.string.sign_success, getBaseContext());
 		}
 	}
 

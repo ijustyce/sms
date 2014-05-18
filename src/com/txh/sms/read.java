@@ -60,6 +60,7 @@ public class read extends baseclass{
 			num = shared.getString("number", "");
 			total = shared.getInt("total", 0);
 			shared.edit().clear().commit();
+			tx.setMainActivity(new Intent(this , MainActivity.class));
 		}
 		
 		if (total < 1) {
